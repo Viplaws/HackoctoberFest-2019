@@ -1,23 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-long long int gcd(long long int a, long long int b) {
-    if (a == 0)
-        return b;
-    return gcd(b % a, a);
+long long int gcd(long long int a, long long int b)
+{
+    int r,temp;
+    
+    long long int prod=a*b,lcm;
+    if(b>a)
+        {
+            temp=b;
+            b=a;
+            a=temp;
+        }
+     while(r!=0)
+        {
+            r=a%b;
+            a=b;
+            b=r;
+        }
+    lcm=prod/r;
+    return lcm;
+    
 }
 
 int main() {
     long long int a, b;
     cin >> a >> b;
-    long long int c = gcd(a, b);
-    long long int lcm = 0;
-    // here use formula that ==>  gcd(a,b)*lcm(a,b) = a*b
-    if (c != 0) {
-        // this condition is to prevent seg fault in case of a = 0 & b = 0 as
-        // input
-        lcm = (a * b) / c;
-    }
+    long long int lcm = gcd(a, b);
+    
     cout << "LCM of " << a << " and " << b << " is " << lcm << endl;
     return 0;
 }
