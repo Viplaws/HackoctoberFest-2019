@@ -32,6 +32,10 @@ class Trie{
   {
     root = new TrieNode();
   }
+  ~Trie(){
+    delete root;
+    root = nullptr;
+  }
 };
 
 
