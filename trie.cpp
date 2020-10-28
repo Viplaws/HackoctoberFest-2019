@@ -36,6 +36,18 @@ class Trie{
     delete root;
     root = nullptr;
   }
+  void insert(string &s)
+  {   TrieNode* curr = root;
+     for(int i=0;i<s.size();i++)
+     {
+         if(curr->child[s[i]-'a']==NULL)
+         {
+           curr->child[s[i]-'a']= new TrieNode();
+         }
+       curr = curr->child[s[i]-'a'];
+     }
+     curr->is_end=true;
+  }
 };
 
 
